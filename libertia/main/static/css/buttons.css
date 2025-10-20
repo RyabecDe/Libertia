@@ -1,0 +1,16 @@
+#toggleTheme {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#themeIcon {
+    display: block;
+    line-height: 1;
+    font-size: 1rem;
+}
+
+.btn-round {
+  border-radius: 300px !important;
+  aspect-ratio: 1 / 1;
+}

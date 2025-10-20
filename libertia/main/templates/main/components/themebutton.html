@@ -1,0 +1,37 @@
+{% load static %}
+
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.5.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+<link rel="stylesheet" type='text/css' href="{% static 'css/buttons.css' %}">
+
+<button 
+    id="toggleTheme" 
+    class="btn btn-sm btn-outline-secondary btn-round d-flex align-items-center justify-content-center" 
+    style="padding:0.25rem 0.5rem; border-radius:0.25rem;">
+        
+    <i id="themeIcon" class="fi fi-rr-sun"></i>
+
+</button>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const body = document.body;
+  const btn = document.getElementById('toggleTheme');
+  const icon = document.getElementById('themeIcon');
+
+  const savedTheme = localStorage.getItem('theme');
+  if(savedTheme){
+    body.setAttribute('data-bs-theme', savedTheme);
+    icon.className = savedTheme === 'dark' ? 'fi fi-rr-moon' : 'fi fi-rr-sun';
+  }
+
+  btn.onclick = () => {
+    const current = body.getAttribute('data-bs-theme') || 'light';
+    const next = current === 'light' ? 'dark' : 'light';
+    body.setAttribute('data-bs-theme', next);
+    localStorage.setItem('theme', next);
+
+    icon.className = next === 'dark' ? 'fi fi-rr-moon' : 'fi fi-rr-sun';
+  };
+});
+</script>
